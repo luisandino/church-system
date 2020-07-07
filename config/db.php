@@ -3,8 +3,8 @@
 return [
     'class' => 'yii\db\Connection',
     'dsn' => 'mysql:host=localhost;port=3308;dbname=ecnhonduras_sis',
-    'username' => 'root',
-    'password' => 'ECNHonduras2020',
+    'username' => 'ecnsis',
+    'password' => 's1spl@tform!$_',
     'charset' => 'utf8',
 
     // Schema cache options (for production environment)
