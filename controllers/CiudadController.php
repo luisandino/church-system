@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Ciudad;
+use app\models\CiudadSearch;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -35,12 +36,12 @@ class CiudadController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => Ciudad::find()->select('ciudad.Id,ciudad.Codigo,ciudad.Nombre, ciudad.Fecha_creacion,ciudad.Id_paises, paises.Nombre Pais')
-                ->innerJoinWith('paises','ciudad.Id_paises = paises.Id'),
-        ]);
+
+        $searchModel = new CiudadSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
+            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }

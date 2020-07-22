@@ -2,36 +2,33 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-use app\models\Paises;
-use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
+/* @var $searchModel app\models\ReligionesSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Ciudades';
+$this->title = 'Religiones';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="ciudades-index">
+<div class="religiones-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Ciudades', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Religiones', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'Codigo',
             'Nombre',
             'Fecha_creacion',
-            'Id_paises',            
-            'paises.Nombre',
-            //'paises.Codigo',
-            
+
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

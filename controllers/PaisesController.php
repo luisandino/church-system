@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Paises;
+use app\models\PaisesSearch;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -35,11 +36,11 @@ class PaisesController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => Paises::find(),
-        ]);
+        $searchModel = new PaisesSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
+            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }

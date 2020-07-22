@@ -1,53 +1,104 @@
 <?php
-
+use yii\helpers\Url;
+use kartik\sidenav\SideNav;
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
+$this->title = 'Administración ECN';
 ?>
 <div class="site-index">
 
     <div class="jumbotron">
-        <h1>Congratulations!</h1>
+        <h1>Administración ECN</h1>
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
+        <p class="lead">Bienvenido al sitio de manejo de movimiento ECN</p>
 
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
+        <!-- <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p> -->
     </div>
 
-    <div class="body-content">
+    <!-- <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Clients</a>
+    <a href="#">Contact</a>
+    </div>  
+    <span onclick="openNav()">open</span> -->
 
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+    <?php 
+        echo SideNav::widget([
+            'type' => SideNav::TYPE_PRIMARY,
+            'heading' => 'Options',
+            //'indMenuOpen' => '*',
+            'items' => [
+                [
+                    'url' => Url::to(['site/index']),
+                    'label' => 'Home',
+                    'icon' => 'home'
+                ],
+                [
+                    'url' => ['paises/index'],
+                    'label' => 'Paises',
+                    'icon' => 'Hogar'
+                ],
+                [
+                    'url' => ['canal-movimiento/index'],
+                    'label' => 'Canales Comunicación',
+                    'icon' => 'Hogar'
+                ],
+                [
+                    'url' => ['ciudad/index'],
+                    'label' => 'Ciudades',
+                    'icon' => 'Hogar'
+                ],
+                [
+                    'url' => ['comunidades/index'],
+                    'label' => 'Comunidades',
+                    'icon' => 'Hogar'
+                ],
+                [
+                    'url' => ['coordinadores-retiro/index'],
+                    'label' => 'Coordinadores Retiro',
+                    'icon' => 'Hogar'
+                ],
+                [
+                    'url' => ['iglesias/index'],
+                    'label' => 'Iglesias',
+                    'icon' => 'Hogar'
+                ],
+                [
+                    'url' => ['movimiento-religioso/index'],
+                    'label' => 'Movimiento Religioso',
+                    'icon' => 'Hogar'
+                ],
+                [
+                    'url' => ['personas/index'],
+                    'label' => 'Personas',
+                    'icon' => 'Hogar'
+                ],
+                [
+                    'url' => ['religiones/index'],
+                    'label' => 'Religiones',
+                    'icon' => 'Hogar'
+                ],
+                [
+                    'url' => ['tipo-documento/index'],
+                    'label' => 'Tipo Documento',
+                    'icon' => 'Hogar'
+                ],
+                [
+                    'url' => ['tipo-relacion/index'],
+                    'label' => 'Tipo Relación',
+                    'icon' => 'Hogar'
+                ],                                                                                                                                                                                
+                [
+                    'label' => 'Help',
+                    'icon' => 'question-sign',
+                    'items' => [
+                        ['label' => 'About', 'icon'=>'info-sign', 'url'=>'#'],
+                        ['label' => 'Contact', 'icon'=>'phone', 'url'=>'#'],
+                    ],
+                ],
+            ],
+        ]); ?>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
-        </div>
-
-    </div>
 </div>

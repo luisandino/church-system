@@ -12,6 +12,7 @@ use Yii;
  * @property string|null $Nombre
  * @property string|null $Fecha_creacion
  * @property int $Id_paises
+ * @property string|null $Nombre_pais
  *
  * @property Paises $paises
  * @property Comunidades[] $comunidades
@@ -38,8 +39,8 @@ class Ciudad extends \yii\db\ActiveRecord
         return [
             //[['Fecha_creacion'], 'safe'],
             [['Id_paises'], 'required'],
-            [['Id_paises'], 'integer'],
-            [['Codigo'], 'string', 'max' => 2],
+            [['Id_paises'], 'string'],
+            [['Codigo'], 'string', 'max' => 3],
             [['Nombre'], 'string', 'max' => 100],
             [['Codigo'], 'unique'],
             [['Nombre'], 'unique'],
@@ -57,8 +58,8 @@ class Ciudad extends \yii\db\ActiveRecord
             'Codigo' => 'Codigo',
             'Nombre' => 'Nombre',
             'Fecha_creacion' => 'Fecha Creacion',
-            'Id_paises' => 'Id Paises',
-            'paises.Nombre' => 'Pais'
+            'Id_paises' => 'Pais',
+            'paises.Nombre' => 'Pais',            
         ];
     }
 
@@ -70,6 +71,11 @@ class Ciudad extends \yii\db\ActiveRecord
     public function getPaises()
     {
         return $this->hasOne(Paises::className(), ['Id' => 'Id_paises']);
+    }
+
+    public function getNombrePais()
+    {
+        return $this->paises->Nombre;
     }
 
     /**

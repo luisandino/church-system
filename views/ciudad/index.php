@@ -6,7 +6,7 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Ciudads';
+$this->title = 'Ciudades';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="ciudad-index">
@@ -19,6 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
     <?= GridView::widget([
+        'filterModel' => $searchModel,
         'dataProvider' => $dataProvider,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
@@ -27,8 +28,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'Codigo',
             'Nombre',
             'Fecha_creacion',
-            //'Id_paises',
-            'paises.Nombre',
+            [
+                'label' => 'Pais',
+                'attribute' => 'Id_paises',
+                'value' => function($model){
+                    $Pais = app\models\Paises::find()->where(['Id'=>$model->Id_paises])->one();
+                    return $Pais->Nombre;
+                }
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

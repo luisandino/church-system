@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Ciudades;
-use yii\data\ActiveDataProvider;
+use app\models\TipoDocumento;
+use app\models\TipoDocumentoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * CiudadesController implements the CRUD actions for Ciudades model.
+ * TipoDocumentoController implements the CRUD actions for TipoDocumento model.
  */
-class CiudadesController extends Controller
+class TipoDocumentoController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -30,23 +30,22 @@ class CiudadesController extends Controller
     }
 
     /**
-     * Lists all Ciudades models.
+     * Lists all TipoDocumento models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => Ciudades::find()->select('ciudad.Id,ciudad.Codigo,ciudad.Nombre, ciudad.Fecha_creacion,ciudad.Id_paises, paises.Nombre')
-                ->innerJoinWith('paises','ciudad.Id_paises = paises.Id'),
-        ]);
+        $searchModel = new TipoDocumentoSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
+            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
 
     /**
-     * Displays a single Ciudades model.
+     * Displays a single TipoDocumento model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -59,16 +58,15 @@ class CiudadesController extends Controller
     }
 
     /**
-     * Creates a new Ciudades model.
+     * Creates a new TipoDocumento model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Ciudades();
+        $model = new TipoDocumento();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            //return $this->redirect(['view', 'id' => $model->Id]);
             return $this->redirect(['index']);
         }
 
@@ -78,7 +76,7 @@ class CiudadesController extends Controller
     }
 
     /**
-     * Updates an existing Ciudades model.
+     * Updates an existing TipoDocumento model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -98,7 +96,7 @@ class CiudadesController extends Controller
     }
 
     /**
-     * Deletes an existing Ciudades model.
+     * Deletes an existing TipoDocumento model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -112,15 +110,15 @@ class CiudadesController extends Controller
     }
 
     /**
-     * Finds the Ciudades model based on its primary key value.
+     * Finds the TipoDocumento model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Ciudades the loaded model
+     * @return TipoDocumento the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Ciudades::findOne($id)) !== null) {
+        if (($model = TipoDocumento::findOne($id)) !== null) {
             return $model;
         }
 

@@ -4,14 +4,14 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Ciudades */
+/* @var $model app\models\CanalMovimiento */
 
 $this->title = $model->Id;
-$this->params['breadcrumbs'][] = ['label' => 'Ciudades', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Canal Movimientos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="ciudades-view">
+<div class="canal-movimiento-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -29,10 +29,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'Codigo',
             'Nombre',
             'Fecha_creacion',
-            'paises.Nombre',
         ],
     ]) ?>
 

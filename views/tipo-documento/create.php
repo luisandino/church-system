@@ -3,13 +3,13 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Ciudades */
+/* @var $model app\models\TipoDocumento */
 
-$this->title = 'Create Ciudades';
-$this->params['breadcrumbs'][] = ['label' => 'Ciudades', 'url' => ['index']];
+$this->title = 'Create Tipo Documento';
+$this->params['breadcrumbs'][] = ['label' => 'Tipo Documentos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="ciudades-create">
+<div class="tipo-documento-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
